@@ -1,0 +1,14 @@
+﻿@page "/homework/{title?}"
+@* @page "/homework/" *@
+
+@if (string.IsNullOrWhiteSpace(Title))
+{
+    <h1>Homework</h1>
+}
+else
+{
+    <h1>@Title</h1>
+}
+
+<button class="btn btn-primary" @onclick="GoToIndex">Strona główna</button>
+
