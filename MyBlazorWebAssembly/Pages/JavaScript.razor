@@ -3,3 +3,47 @@
 <h3>JavaScript</h3>
 
 <button class="btn btn-info" @onclick="DisplayAlert">Alert</button>
+
+<hr />
+
+<button class="btn btn-info" @onclick="DisplayConfirmDialog">Wyświetl potwierdzenie</button>
+
+@if (_dialogResult)
+{
+    <p class="text-success mt-2">Potwierdzono!</p>
+}
+else
+{
+    <p class="mt-2">Oczekiwanie na potwierdzenie</p>
+
+}
+
+<hr />
+
+<button class="btn btn-info" @onclick="ShowResultJs">Wyświetl wynik dodawania</button>
+
+
+<hr />
+
+<button class="btn btn-dark mt-3" @onclick="ShowResultCSharp">Wyświetl wynik dodawania (Wywołaj C# w JS)</button>
+
+<hr />
+
+<button class="btn btn-dark mt-3" @onclick="ShowDate">Wyświetl datę</button>
+
+@if (!string.IsNullOrWhiteSpace(_currentDate))
+{
+    <p class="text-success mt-2">Date: @_currentDate</p>
+}
+
+<hr />
+
+<button class="btn btn-info" @onclick="ShowResultJsModule">Wyświetl wynik dodawania (JS Module)</button>
+
+<hr />
+
+<button class="btn btn-success" @onclick="ShowToastrNotification">Wyświetl notyfikację (toastR)</button>
+
+<hr />
+
+<button class="btn btn-danger" @onclick="ChangeBackgroundColor">Zmień kolor tła</button>
