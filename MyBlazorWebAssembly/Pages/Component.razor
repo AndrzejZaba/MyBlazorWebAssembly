@@ -1,0 +1,34 @@
+﻿@page "/component"
+
+<h3>Component</h3>
+
+<CascadingValue Value="@_title" Name="Title">
+    <CascadingValue Value="@_info" Name="Info">
+        <Card 
+            Image="/files/kowalski.png"
+            Title="Jan Kowalski"
+            Content="Programista C# .NET z 20-letnim doświadczeniem. Specjalizacje: Blazor i ASP .NET Core"
+            BtnText="Więcej"
+            OnClickMore="ClickMore">
+        </Card>
+    </CascadingValue>
+</CascadingValue>
+
+
+
+
+
+<hr />
+
+<div class="d-flex gap-2">
+    @foreach (var author in _authors)
+    {
+        <Card Image="@author.Image"
+              Title="@author.Title"
+              Content="@author.Content"
+              BtnText="@author.BtnText">
+
+        </Card>
+    }
+</div>
+
