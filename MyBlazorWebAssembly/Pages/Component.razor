@@ -4,6 +4,19 @@
 
 <br />
 
+<ModalWindow Show="_showModalWindow" 
+    @ref="_modal"
+    OnAccept="ModalAccept"
+    OnCancel="ModalCancel">
+    <Title><p>Okno modalne</p></Title>
+    <Body>
+        aaaaa<br />
+        aaaaa<br />
+        aaaaa<br />
+    </Body>
+</ModalWindow>
+
+
 <button class="btn btn-danger" @onclick="ChangeBtnText"> 
     Zmień tekst przycisku
 </button>
@@ -11,6 +24,11 @@
 <button class="btn btn-secondary my-2" @onclick="AddCardBorder"> 
     Dodaj obramowanie
 </button>
+
+<button class="btn btn-primary my-2" @onclick="ShowModalWindow"> 
+    Pokaż okno modalne
+</button>
+
 
 <CascadingValue Value="@_title" Name="Title">
     <CascadingValue Value="@_info" Name="Info">

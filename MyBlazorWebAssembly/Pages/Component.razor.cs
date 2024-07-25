@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
 using MyBlazorWebAssembly.Components;
 using MyBlazorWebAssembly.Models;
 
@@ -10,6 +11,8 @@ public partial class Component
     private string _title = "Tytuł";
     private string _btnText = "Więcej";
     private Card _card;
+    private bool _showModalWindow = false;  
+    private ModalWindow _modal;
 
     private Dictionary<string, object> _cardAtributes = new()
     {
@@ -90,6 +93,22 @@ public partial class Component
     {
         _card.AddCardBorder();
     }
+
+    private void ShowModalWindow()
+    {
+        _showModalWindow = true;
+    }
+
+    private void ModalAccept(MouseEventArgs e)
+    {
+        Console.WriteLine("Operacja zatwierdzona");
+        _showModalWindow = false;
+    }
+    private void ModalCancel(MouseEventArgs e)
+    {
+        _showModalWindow = false;
+    }
+
 
 
 }
