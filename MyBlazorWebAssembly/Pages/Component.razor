@@ -2,14 +2,31 @@
 
 <h3>Component</h3>
 
+<br />
+
+<button class="btn btn-danger" @onclick="ChangeBtnText"> 
+    Zmień tekst przycisku
+</button>
+
 <CascadingValue Value="@_title" Name="Title">
     <CascadingValue Value="@_info" Name="Info">
         <Card 
             Image="/files/kowalski.png"
-            Title="Jan Kowalski"
-            Content="Programista C# .NET z 20-letnim doświadczeniem. Specjalizacje: Blazor i ASP .NET Core"
-            BtnText="Więcej"
-            OnClickMore="ClickMore">
+            BtnText="@_btnText"
+            OnClickMore="ClickMore"
+            BtnAttributes="_cardBtnAtributes"    
+        >
+            <Title>
+                <b>Jan Kowalski</b>
+            </Title>
+            <Content>
+                <u>Programista C# .NET</u> z 20-letnim doświadczeniem. <br />
+                <b>Specjalizacje</b>: 
+                <ul>
+                    <li>Blazor</li>
+                    <li>ASP .NET Core</li>
+                </ul>
+            </Content>
         </Card>
     </CascadingValue>
 </CascadingValue>
@@ -24,11 +41,9 @@
     @foreach (var author in _authors)
     {
         <Card Image="@author.Image"
-              Title="@author.Title"
-              Content="@author.Content"
               BtnText="@author.BtnText">
-
+              <Title>@author.Title</Title>
+            <Content>@author.Content</Content>
         </Card>
     }
 </div>
-
