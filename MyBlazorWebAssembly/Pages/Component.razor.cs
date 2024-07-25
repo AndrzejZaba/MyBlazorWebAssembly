@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using MyBlazorWebAssembly.Components;
 using MyBlazorWebAssembly.Models;
 
 namespace MyBlazorWebAssembly.Pages;
@@ -8,6 +9,7 @@ public partial class Component
     private string _info = "123";
     private string _title = "Tytuł";
     private string _btnText = "Więcej";
+    private Card _card;
 
     private Dictionary<string, object> _cardAtributes = new()
     {
@@ -32,33 +34,46 @@ public partial class Component
 
     protected override async Task OnInitializedAsync()
     {
-        _authors = new List<CardModel>
-    {
-        new CardModel
-        {
-            Title="Jan Kowalski",
-            Content = "Programista C# .NET z 20-letnim doświadczeniem. Specjalizacje: Blazor i ASP .NET Core",
-            Image = "/files/kowalski.png",
-            BtnText = "Więcej"
-        },
-        new CardModel
-        {
-            Title="Anna Nowak",
-            Content = "Programistka C# .NET z 10-letnim doświadczeniem. Specjalizacje: Blazor i ASP .NET Core",
-            Image = "/files/nowak.png",
-            BtnText = "Więcej"
-        },
-        new CardModel
-        {
-            Title="Błażej Kwiatkowski",
-            Content = "Programista C# .NET z 5-letnim doświadczeniem. Specjalizacje: Blazor i ASP .NET Core",
-            Image = "/files/kwiatkowski.png",
-            BtnText = "Więcej"
-        },
-    };
+        
 
 
         await base.OnInitializedAsync();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            _authors = new List<CardModel>
+            {
+                new CardModel
+                {
+                    Title="Jan Kowalski",
+                    Content = "Programista C# .NET z 20-letnim doświadczeniem. Specjalizacje: Blazor i ASP .NET Core",
+                    Image = "/files/kowalski.png",
+                    BtnText = "Więcej"
+                },
+                new CardModel
+                {
+                    Title="Anna Nowak",
+                    Content = "Programistka C# .NET z 10-letnim doświadczeniem. Specjalizacje: Blazor i ASP .NET Core",
+                    Image = "/files/nowak.png",
+                    BtnText = "Więcej"
+                },
+                new CardModel
+                {
+                    Title="Błażej Kwiatkowski",
+                    Content = "Programista C# .NET z 5-letnim doświadczeniem. Specjalizacje: Blazor i ASP .NET Core",
+                    Image = "/files/kwiatkowski.png",
+                    BtnText = "Więcej"
+                },
+            };
+
+            StateHasChanged();
+        }
+
+
+        await base.OnAfterRenderAsync(firstRender);
     }
 
     private void ClickMore()
@@ -70,5 +85,11 @@ public partial class Component
     {
         _btnText = "Więcej ......";
     }
+
+    private void AddCardBorder()
+    {
+        _card.AddCardBorder();
+    }
+
 
 }

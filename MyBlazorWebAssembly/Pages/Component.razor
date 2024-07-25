@@ -8,9 +8,13 @@
     Zmień tekst przycisku
 </button>
 
+<button class="btn btn-secondary my-2" @onclick="AddCardBorder"> 
+    Dodaj obramowanie
+</button>
+
 <CascadingValue Value="@_title" Name="Title">
     <CascadingValue Value="@_info" Name="Info">
-        <Card 
+        <Card @ref="_card"
             Image="/files/kowalski.png"
             BtnText="@_btnText"
             OnClickMore="ClickMore"
